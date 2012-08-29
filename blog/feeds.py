@@ -4,9 +4,9 @@ from blog.models import Entry
 
 
 class LatestEntries(Feed):
-    title = 'Hope Town Lodge Blog'
+    title = 'Blog'
     link = '/blog/'
-    description = 'Latest blog posts Hope Town Lodge'
+    description = 'Latest blog posts'
 
     def items(self):
         return Entry.live.all()[:30]
