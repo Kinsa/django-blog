@@ -1,5 +1,11 @@
 from django.contrib import admin
-from blog.models import Category, Entry
+from blog.models import Author, Category, Entry
+
+
+class AuthorAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Author, AuthorAdmin)
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -20,6 +26,5 @@ class EntryAdmin(admin.ModelAdmin):
     # add hierarchy navigation, by date, at the top of the list view
     # this allows us to drill down by year, then month, then day and so on
     date_hierarchy = 'pub_date'
-    raw_id_fields = ('author',)
 
 admin.site.register(Entry, EntryAdmin)
