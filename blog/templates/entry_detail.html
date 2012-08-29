@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load nav %}
+{% load categories %}
+{% load markup %}
+{% load authors %}
+
+{# meta data #}
+{% block metadescription %}{{ object.body_html|striptags|truncatewords:30 }}{% endblock %}
+{% block metakeywords %}{% endblock %}
+{% block pagetitle %}{{ object.title|striptags }}{% endblock %}
+
+{% block fb_title %}{{ object.title|striptags }}{% endblock %}
+{% block fb_type %}{% endblock %}
+{% block fb_image %}{% endblock %}
+{% block fb_url %}{{ object.get_absolute_url }}{% endblock %}
+{% block fb_description %}{{ object.body_html|striptags|truncatewords:30 }}{% endblock %}
+
+{# page specific includes (stylesheets, javascripts) #}
+{% block additional_head_items %}{% endblock additional_head_items %}
+
+{# body id #}
+{% block bodyid %}{{ block.super }}{% endblock %}{# for 'base' body id use {{ block.super }} #}
+
+{# body class #}
+{% block bodyclass %}{{ block.super }}{% endblock %}{# for 'base' body class use {{ block.super }} #}
+
+{% block nav %}
+    {% nav "blog" %}
+    {{ block.super }}
+{% endblock %}
+
+{# content #}
+{% block content %}
+    <section>
+        <article>
+            <hgroup>
+                <h1>{{ object.title|safe }}</h1>
+                <h2>{{ object.pub_date|date:"F j, Y" }} by <a href="{% url blog_author_detail id=object.author.id %}">{% with object.author.user as user %}{% include "blog/_author_name.html" %}{% endwith %}</a></h2>
+            </hgroup>
+            {{ object.body_html|safe }}
+        </article>
+    </section>
+{% endblock content %}
+
+{# javascript #}
+{% block javascript %}
+    {{ block.super }}
+{% endblock %}

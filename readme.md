@@ -15,4 +15,4 @@ Add the following to the ``patterns()`` method in the project's primary ``urls.p
 
 The RSS feed can now be referred to in the ``<head>`` of your HTML templates:
     
-    <link rel="feed alternate" type="application/rss+xml" title="Blog" href="{% url blog_feed 'blog' %}" />
+    <link rel="feed alternate" type="application/rss+xml" title="Blog" href="{% url blog_feed %}" />
