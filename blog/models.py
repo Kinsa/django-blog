@@ -12,6 +12,12 @@ now = datetime.datetime.utcnow().replace(tzinfo=utc)
 
 class Author(models.Model):
     user = models.OneToOneField(User)
+
+    def __unicode__(self):
+        if self.user.first_name and self.user.last_name:
+            return "%s %s" % (self.user.first_name, self.user.last_name)
+        else:
+            return self.user.username
     
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
@@ -67,7 +73,8 @@ class Entry(models.Model):
     slug = models.SlugField(unique_for_date='pub_date',
         help_text='Suggested value automatically generated from title. '\
                   'Must be unique.')
-    body = models.TextField(help_text="Use Markdown to mark this up.")
+    body = models.TextField(help_text='Use Markdown to mark this up. '\
+        'http://daringfireball.net/projects/markdown/syntax')
     body_html = models.TextField(editable=False, blank=True)
     pub_date = models.DateTimeField(default=now)
     author = models.ForeignKey(Author)
