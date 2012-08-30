@@ -6,6 +6,8 @@ Add ``'django.contrib.markup',`` to the ``INSTALLED_APPS`` tuple in ``settings.p
 
 Add ``AUTH_PROFILE_MODULE = 'blog.Author'`` to ``settings.py``.
 
+Migrate the database.
+
 Add the following to the ``patterns()`` method in the project's primary ``urls.py`` file:
 
     url(r'^blog/author/', include('blog.urls.authors')),
