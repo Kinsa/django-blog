@@ -6,7 +6,7 @@ from blog.models import Author
 register = template.Library()
 
 
-@register.inclusion_tag('_authors.html')
+@register.inclusion_tag('blog/_authors.html')
 def fetch_authors():
     try:
         all_authors = Author.objects.all()
