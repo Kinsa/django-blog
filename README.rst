@@ -38,7 +38,7 @@ Add to the project's settings file tuple of INSTALLED_APPS:
 
 ::
 
- 'south'
+ 'south',
  'django.contrib.markup',
  'django_blog',
 
