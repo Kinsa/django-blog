@@ -17,12 +17,12 @@ class BlogCategoryTest(TestCase):
 
         r = self.client.get(reverse('blog_category_list'))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/category_list.html')
+        self.assertTemplateUsed(r, 'django_blog/category_list.html')
 
         r = self.client.get(reverse('blog_category_detail',
             kwargs={'slug': c.slug}))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/category_detail.html')
+        self.assertTemplateUsed(r, 'django_blog/category_detail.html')
 
     def test_add_entry(self):
         user = User.objects.create_user('testuser',
@@ -43,25 +43,25 @@ class BlogCategoryTest(TestCase):
 
         r = self.client.get(reverse('blog_entry_archive'))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/entry_archive.html')
+        self.assertTemplateUsed(r, 'django_blog/entry_archive.html')
 
         r = self.client.get(reverse('blog_entry_archive_year',
             kwargs={'year': e.pub_date.strftime('%Y')}))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/entry_archive_year.html')
+        self.assertTemplateUsed(r, 'django_blog/entry_archive_year.html')
 
         r = self.client.get(reverse('blog_entry_archive_month',
             kwargs={'year': e.pub_date.strftime('%Y'),
                     'month': e.pub_date.strftime('%b')}))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/entry_archive_month.html')
+        self.assertTemplateUsed(r, 'django_blog/entry_archive_month.html')
 
         r = self.client.get(reverse('blog_entry_archive_day',
             kwargs={'year': e.pub_date.strftime('%Y'),
                     'month': e.pub_date.strftime('%b'),
                     'day': e.pub_date.strftime('%d')}))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/entry_archive_day.html')
+        self.assertTemplateUsed(r, 'django_blog/entry_archive_day.html')
 
         r = self.client.get(reverse('blog_entry_detail',
             kwargs={'year': e.pub_date.strftime('%Y'),
@@ -69,4 +69,4 @@ class BlogCategoryTest(TestCase):
                     'day': e.pub_date.strftime('%d'),
                     'slug': e.slug}))
         self.assertEqual(r.status_code, 200)
-        self.assertTemplateUsed(r, 'blog/entry_detail.html')
+        self.assertTemplateUsed(r, 'django_blog/entry_detail.html')
