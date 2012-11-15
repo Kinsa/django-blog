@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
-from blog.models import Author, Category
+from django_blog.models import Author, Category
 
 
 def category_detail(request, slug):

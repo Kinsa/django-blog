@@ -18,7 +18,7 @@ class Author(models.Model):
             return "%s %s" % (self.user.first_name, self.user.last_name)
         else:
             return self.user.username
-    
+
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             Author.objects.create(user=instance)
@@ -48,7 +48,7 @@ class Category(models.Model):
     get_absolute_url = models.permalink(get_absolute_url)
 
     def live_entry_set(self):
-        from blog.models import Entry
+        from django_blog.models import Entry
         return self.entry_set.filter(status=Entry.LIVE_STATUS)
 
 

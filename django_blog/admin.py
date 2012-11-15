@@ -1,5 +1,6 @@
 from django.contrib import admin
-from blog.models import Author, Category, Entry
+
+from django_blog.models import Author, Category, Entry
 
 
 class AuthorAdmin(admin.ModelAdmin):

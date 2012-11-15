@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns
 
-from blog.models import Category
+from django_blog.models import Category
 
 
 urlpatterns = patterns('',

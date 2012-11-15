@@ -9,23 +9,23 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Author'
-        db.create_table('blog_author', (
+        db.create_table('django_blog_author', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
         ))
-        db.send_create_signal('blog', ['Author'])
+        db.send_create_signal('django_blog', ['Author'])
 
 
         # Changing field 'Entry.author'
-        db.alter_column('blog_entry', 'author_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['blog.Author']))
+        db.alter_column('django_blog_entry', 'author_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['django_blog.Author']))
 
     def backwards(self, orm):
         # Deleting model 'Author'
-        db.delete_table('blog_author')
+        db.delete_table('django_blog_author')
 
 
         # Changing field 'Entry.author'
-        db.alter_column('blog_entry', 'author_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User']))
+        db.alter_column('django_blog_entry', 'author_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User']))
 
     models = {
         'auth.group': {
@@ -57,23 +57,23 @@ class Migration(SchemaMigration):
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
             'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
         },
-        'blog.author': {
+        'django_blog.author': {
             'Meta': {'object_name': 'Author'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True'})
         },
-        'blog.category': {
+        'django_blog.category': {
             'Meta': {'ordering': "['title']", 'object_name': 'Category'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '250'})
         },
-        'blog.entry': {
+        'django_blog.entry': {
             'Meta': {'ordering': "['-pub_date']", 'object_name': 'Entry'},
-            'author': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['blog.Author']"}),
+            'author': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['django_blog.Author']"}),
             'body': ('django.db.models.fields.TextField', [], {}),
             'body_html': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'category': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['blog.Category']"}),
+            'category': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['django_blog.Category']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'pub_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 8, 29, 0, 0)'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
@@ -89,4 +89,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['blog']
+    complete_apps = ['django_blog']

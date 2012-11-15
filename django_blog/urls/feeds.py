@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-from blog.feeds import LatestEntries
+from django_blog.feeds import LatestEntries
 
 
 urlpatterns = patterns('',

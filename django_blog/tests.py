@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
 
-from blog.models import Author, Category, Entry
+from django_blog.models import Author, Category, Entry
 
 
 class BlogCategoryTest(TestCase):
@@ -29,7 +29,7 @@ class BlogCategoryTest(TestCase):
                                         'testuser@domain.com',
                                         'testpassword')
         user.save()
-        
+
         a = Author.objects.get(user__username='testuser')
 
         c = Category.objects.create(title='Test Category',

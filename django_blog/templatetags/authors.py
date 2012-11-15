@@ -1,6 +1,6 @@
 from django import template
 
-from blog.models import Author
+from django_blog.models import Author
 
 
 register = template.Library()

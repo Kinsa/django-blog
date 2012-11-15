@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns
 
-from blog.models import Entry
+from django_blog.models import Entry
 
 
 entry_info_dict = {
