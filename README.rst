@@ -53,13 +53,13 @@ Specify the AUTH_PROFILE_MODULE in the project's settings file:
 
 ::
 
- AUTH_PROFILE_MODULE = 'blog.Author'
+ AUTH_PROFILE_MODULE = 'django_blog.Author'
 
 Migrate the database.
 
 ::
 
- $ ./manage.py migrate blog
+ $ ./manage.py migrate django_blog
 
 A list of the latest 15 posts can now be linked to: 
 
