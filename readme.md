@@ -16,7 +16,7 @@ Add the following to the ``patterns()`` method in the project's primary ``urls.p
 
     url(r'^blog/author/', include('blog.urls.authors')),
     url(r'^blog/category/', include('blog.urls.categories')),
-    url(r'^blog/feeds/', include('blog.urls.feeds')), 
+    url(r'^blog/feeds/', include('blog.urls.feeds')),
     url(r'^blog/', include('blog.urls.entries')),
 
 A list of the latest 15 posts can now be linked to:
