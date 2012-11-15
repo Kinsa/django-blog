@@ -9,6 +9,6 @@ urlpatterns = patterns('',
         {'queryset': Category.objects.all()},
         'blog_category_list'),
     (r'^(?P<slug>[-\w]+)/$',
-        'blog.views.category_detail',
+        'django_blog.views.category_detail',
         '',
         'blog_category_detail'),)
