@@ -8,13 +8,10 @@ entry_info_dict = {
     'date_field': 'pub_date',
 }
 
-entry_info_dict_w_month = dict.copy(entry_info_dict)
-entry_info_dict_w_month['month_format'] = '%m'
-
 entry_detail_dict = {
     'queryset': Entry.objects.all(),
     'date_field': 'pub_date',
-    'month_format': '%m'}
+}
 
 urlpatterns = patterns('django.views.generic.date_based',
     (r'^$',
@@ -25,15 +22,15 @@ urlpatterns = patterns('django.views.generic.date_based',
         'archive_year',
         dict(entry_info_dict, make_object_list=True),
         'blog_entry_archive_year'),
-    (r'^(?P<year>\d{4})/(?P<month>\d{2})/$',
+    (r'^(?P<year>\d{4})/(?P<month>\w{3})/$',
         'archive_month',
-        entry_info_dict_w_month,
+        entry_info_dict,
         'blog_entry_archive_month'),
-    (r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$',
+    (r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/$',
         'archive_day',
-        entry_info_dict_w_month,
+        entry_info_dict,
         'blog_entry_archive_day'),
-    (r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
+    (r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
         'object_detail',
         entry_detail_dict,
         'blog_entry_detail'),)

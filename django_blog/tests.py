@@ -52,20 +52,20 @@ class BlogCategoryTest(TestCase):
 
         r = self.client.get(reverse('blog_entry_archive_month',
             kwargs={'year': e.pub_date.strftime('%Y'),
-                    'month': e.pub_date.strftime('%m')}))
+                    'month': e.pub_date.strftime('%b')}))
         self.assertEqual(r.status_code, 200)
         self.assertTemplateUsed(r, 'blog/entry_archive_month.html')
 
         r = self.client.get(reverse('blog_entry_archive_day',
             kwargs={'year': e.pub_date.strftime('%Y'),
-                    'month': e.pub_date.strftime('%m'),
+                    'month': e.pub_date.strftime('%b'),
                     'day': e.pub_date.strftime('%d')}))
         self.assertEqual(r.status_code, 200)
         self.assertTemplateUsed(r, 'blog/entry_archive_day.html')
 
         r = self.client.get(reverse('blog_entry_detail',
             kwargs={'year': e.pub_date.strftime('%Y'),
-                    'month': e.pub_date.strftime('%m'),
+                    'month': e.pub_date.strftime('%b'),
                     'day': e.pub_date.strftime('%d'),
                     'slug': e.slug}))
         self.assertEqual(r.status_code, 200)
