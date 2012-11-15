@@ -115,7 +115,12 @@ The RSS feed can now be referred to in the ``<head>`` of your HTML templates:
     
  <link rel="feed alternate" type="application/rss+xml" title="Blog" href="{% url blog_feed %}" />
 
-Edit the templates as necessary.
+Configure the Templates
+=======================
+
+By default the templates contain only the bare necessities. To override the default templates, create a directory called django_blog in your templates directory and copy the templates from the project into that directory in order to make adjustments to them. If you're using Virtualenv, ``cd`` to the root of the django project and execute the following command: ::
+
+ cp -r $VIRTUAL_ENV/src/django-blog/django_blog/templates/django_blog templates/django_blog
 
 Template Tags
 =============
