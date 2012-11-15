@@ -7,7 +7,7 @@ Installation from Source
 
 ::
 
- $ git clone git@github.com:jbergantine/django-blog.git
+ $ git clone git://github.com/jbergantine/django-blog.git
  $ cd django-blog
  $ python setup.py install
 
@@ -22,7 +22,7 @@ Include in the PIP requirements file the following lines:
 
  markdown==2.2.1
  south==0.7.6
- -e git+git@github.com:jbergantine/django-blog.git#egg=django_blog
+ -e git://github.com/jbergantine/django-blog.git#egg=django_blog
 
 And then install as normal (IE:)
 
