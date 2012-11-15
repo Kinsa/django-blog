@@ -11,13 +11,17 @@ Installation from Source
  $ cd django-blog
  $ python setup.py install
 
+You will also have to install `South <http://pypi.python.org/pypi/South/>`_ and `Markdown <http://pypi.python.org/pypi/Markdown/>`_.
+
 Installation via PIP Requirements File
 ======================================
 
-Include in the PIP requirements file the following line:
+Include in the PIP requirements file the following lines:
 
 ::
 
+ markdown==2.2.1
+ south==0.7.6
  -e git+git@github.com:jbergantine/django-blog.git#egg=django_blog
 
 And then install as normal (IE:)
@@ -30,10 +34,11 @@ And then install as normal (IE:)
 Setup the Project For the Application
 =====================================
 
-Add to the project's settings file tuple of installed apps: 
+Add to the project's settings file tuple of INSTALLED_APPS: 
 
 ::
 
+ 'south'
  'django.contrib.markup',
  'django_blog',
 
@@ -51,6 +56,10 @@ Specify the AUTH_PROFILE_MODULE in the project's settings file:
  AUTH_PROFILE_MODULE = 'blog.Author'
 
 Migrate the database.
+
+::
+
+ $ ./manage.py migrate blog
 
 A list of the latest 15 posts can now be linked to: 
 
