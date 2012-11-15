@@ -44,10 +44,10 @@ Add to the project's settings file tuple of INSTALLED_APPS:
 
 In the project's urls.py file add: ::
 
- url(r'^blog/author/', include('blog.urls.authors')),
- url(r'^blog/category/', include('blog.urls.categories')),
- url(r'^blog/feeds/', include('blog.urls.feeds')),
- url(r'^blog/', include('blog.urls.entries')),
+ url(r'^blog/author/', include('django_blog.urls.authors')),
+ url(r'^blog/category/', include('django_blog.urls.categories')),
+ url(r'^blog/feeds/', include('django_blog.urls.feeds')),
+ url(r'^blog/', include('django_blog.urls.entries')),
 
 Specify the AUTH_PROFILE_MODULE in the project's settings file: 
 
