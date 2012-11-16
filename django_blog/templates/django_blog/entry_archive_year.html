@@ -3,7 +3,7 @@
     <ul>
         {% for month in date_list %}
             <li>
-                <h2><a href="{% url blog_entry_archive_month year,month|date:"m" %}"><time>{{ month|date:"F, Y" }}</time></a></h2>
+                <h2><a href="{% url blog_entry_archive_month year,month|date:"b" %}"><time>{{ month|date:"F, Y" }}</time></a></h2>
             </li>
         {% endfor %}
     </ul>
