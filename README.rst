@@ -42,7 +42,9 @@ Add to the project's settings file tuple of INSTALLED_APPS:
  'django.contrib.markup',
  'django_blog',
 
-In the project's urls.py file add: ::
+In the project's urls.py file add: 
+
+::
 
  url(r'^blog/author/', include('django_blog.urls.authors')),
  url(r'^blog/category/', include('django_blog.urls.categories')),
