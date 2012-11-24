@@ -2,6 +2,8 @@
 Django Blog
 ===========
 
+A multi-author blog for Django.
+
 Installation from Source
 ========================
 
