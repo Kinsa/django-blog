@@ -1,6 +1,7 @@
-from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import patterns, url
 
 from django_blog.models import Entry
+from django.views.generic.dates import ArchiveIndexView
 
 
 entry_info_dict = {
@@ -14,10 +15,8 @@ entry_detail_dict = {
 }
 
 urlpatterns = patterns('django.views.generic.date_based',
-    (r'^$',
-        'archive_index',
-        dict(entry_info_dict, num_latest=15),
-        'blog_entry_archive'),
+    url(r'^$', ArchiveIndexView.as_view(queryset=Entry.live.all(),
+        date_field='pub_date'), name='blog_entry_archive'),
     (r'^(?P<year>\d{4})/$',
         'archive_year',
         dict(entry_info_dict, make_object_list=True),
