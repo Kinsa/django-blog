@@ -1,36 +1,49 @@
 from django.conf.urls.defaults import patterns, url
+from django.views.generic.dates import (ArchiveIndexView, DateDetailView,
+    DayArchiveView, MonthArchiveView, YearArchiveView)
 
 from django_blog.models import Entry
-from django.views.generic.dates import ArchiveIndexView, YearArchiveView
 
 
-entry_info_dict = {
-    'queryset': Entry.live.all(),
-    'date_field': 'pub_date',
-}
+urlpatterns = patterns('',
+    url(r'^$',
+        ArchiveIndexView.as_view(
+            date_field='pub_date',
+            queryset=Entry.live.all()
+        ),
+        name='blog_entry_archive'
+    ),
 
-entry_detail_dict = {
-    'queryset': Entry.objects.all(),
-    'date_field': 'pub_date',
-}
+    url(r'^(?P<year>\d{4})/$',
+        YearArchiveView.as_view(
+            date_field='pub_date',
+            make_object_list=True,
+            queryset=Entry.live.all()
+        ),
+        name='blog_entry_archive_year'
+    ),
 
-urlpatterns = patterns('django.views.generic.date_based',
-    url(r'^$', ArchiveIndexView.as_view(date_field='pub_date',
-        queryset=Entry.live.all()), name='blog_entry_archive'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$',
+        MonthArchiveView.as_view(
+            date_field='pub_date',
+            queryset=Entry.live.all()
+        ),
+        name='blog_entry_archive_month'
+    ),
 
-    url(r'^(?P<year>\d{4})/$', YearArchiveView.as_view(date_field='pub_date',
-        make_object_list=True, queryset=Entry.live.all()),
-        name='blog_entry_archive_year'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$',
+        DayArchiveView.as_view(
+            date_field='pub_date',
+            queryset=Entry.live.all()
+        ),
+        name='blog_entry_archive_day'
+    ),
 
-    (r'^(?P<year>\d{4})/(?P<month>\w{3})/$',
-        'archive_month',
-        entry_info_dict,
-        'blog_entry_archive_month'),
-    (r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/$',
-        'archive_day',
-        entry_info_dict,
-        'blog_entry_archive_day'),
-    (r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
-        'object_detail',
-        entry_detail_dict,
-        'blog_entry_detail'),)
+    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
+        DateDetailView.as_view(
+            date_field='pub_date',
+            queryset=Entry.objects.all()
+        ),
+        name='blog_entry_detail'
+    ),
+)
