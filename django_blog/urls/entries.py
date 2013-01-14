@@ -42,7 +42,7 @@ urlpatterns = patterns('',
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
         DateDetailView.as_view(
             date_field='pub_date',
-            queryset=Entry.objects.all()
+            queryset=Entry.objects.exclude(status=Entry.HIDDEN_STATUS),
         ),
         name='blog_entry_detail'
     ),
