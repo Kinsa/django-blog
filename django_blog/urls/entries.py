@@ -1,3 +1,6 @@
+
+
+
 from django.conf.urls.defaults import patterns, url
 from django.views.generic.dates import (ArchiveIndexView, DateDetailView,
     DayArchiveView, MonthArchiveView, YearArchiveView)
@@ -23,7 +26,7 @@ urlpatterns = patterns('',
         name='blog_entry_archive_year'
     ),
 
-    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$',
+    url(r'^(?P<year>\d{4})/(?P<month>[-\w]+)/$',
         MonthArchiveView.as_view(
             date_field='pub_date',
             queryset=Entry.live.all()
@@ -31,7 +34,7 @@ urlpatterns = patterns('',
         name='blog_entry_archive_month'
     ),
 
-    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$',
+    url(r'^(?P<year>\d{4})/(?P<month>[-\w]+)/(?P<day>\d{2})/$',
         DayArchiveView.as_view(
             date_field='pub_date',
             queryset=Entry.live.all()
@@ -39,7 +42,7 @@ urlpatterns = patterns('',
         name='blog_entry_archive_day'
     ),
 
-    url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
+    url(r'^(?P<year>\d{4})/(?P<month>[-\w]+)/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
         DateDetailView.as_view(
             date_field='pub_date',
             queryset=Entry.objects.exclude(status=Entry.HIDDEN_STATUS),
