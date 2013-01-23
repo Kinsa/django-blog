@@ -131,8 +131,8 @@ By default the templates contain only the bare necessities. To override the defa
 Template Tags
 =============
 
-{% authors %}
-*************
+{% fetch_authors %}
+*******************
 
 Returns an unordered list of all authors via the template ``_authors.html``.
 
@@ -141,10 +141,10 @@ Usage:
 ::
 
  {% load authors %}
- {% authors %}
+ {% fetch_authors %}
 
-{% categories %}
-****************
+{% fetch_categories %}
+**********************
 
 Returns an unordered list of all categories via the template ``_categories.html``.
 
@@ -153,4 +153,4 @@ Usage:
 ::
 
  {% load categories %}
- {% categories %}
+ {% fetch_categories %}
