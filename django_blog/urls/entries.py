@@ -1,6 +1,3 @@
-
-
-
 from django.conf.urls.defaults import patterns, url
 from django.views.generic.dates import (ArchiveIndexView, DateDetailView,
     DayArchiveView, MonthArchiveView, YearArchiveView)
