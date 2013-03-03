@@ -1,13 +1,14 @@
 import datetime
+from pytz import timezone
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.timezone import utc
+from myproject.settings.base import TIME_ZONE
 
 from markdown import markdown
 
 
-now = datetime.datetime.utcnow().replace(tzinfo=utc)
+now = datetime.datetime.now().replace(tzinfo=timezone(TIME_ZONE))
 
 
 class Author(models.Model):
