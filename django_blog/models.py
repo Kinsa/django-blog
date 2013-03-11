@@ -71,7 +71,6 @@ class Entry(models.Model):
                   'Must be unique.')
     body = models.TextField(help_text='Use Markdown to mark this up. '\
         'http://daringfireball.net/projects/markdown/syntax')
-    body_html = models.TextField(editable=False, blank=True)
     pub_date = models.DateTimeField(default=datetime.datetime.now().replace(tzinfo=timezone(TIME_ZONE)))
     author = models.ForeignKey(Author)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
@@ -83,10 +82,6 @@ class Entry(models.Model):
 
     def __unicode__(self):
         return self.title
-
-    def save(self, *args, **kwargs):
-        self.body_html = markdown(self.body)
-        super(Entry, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return ('blog_entry_detail',
