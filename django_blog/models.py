@@ -5,11 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from myproject.settings.base import TIME_ZONE
 
-from markdown import markdown
-
-
-now = datetime.datetime.now().replace(tzinfo=timezone(TIME_ZONE))
-
 
 class Author(models.Model):
     user = models.OneToOneField(User)
@@ -77,7 +72,7 @@ class Entry(models.Model):
     body = models.TextField(help_text='Use Markdown to mark this up. '\
         'http://daringfireball.net/projects/markdown/syntax')
     body_html = models.TextField(editable=False, blank=True)
-    pub_date = models.DateTimeField(default=now)
+    pub_date = models.DateTimeField(default=datetime.datetime.now().replace(tzinfo=timezone(TIME_ZONE)))
     author = models.ForeignKey(Author)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
     category = models.ForeignKey(Category)
