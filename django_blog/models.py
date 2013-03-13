@@ -3,6 +3,7 @@ from pytz import timezone
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone as dj_timezone
 from myproject.settings.base import TIME_ZONE
 
 
@@ -84,11 +85,12 @@ class Entry(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        local_pub_date = dj_timezone.localtime(self.pub_date)
         return ('blog_entry_detail',
                 (),
-                {'year': self.pub_date.strftime("%Y"),
-                 'month': self.pub_date.strftime("%b").lower(),
-                 'day': self.pub_date.strftime("%d"),
+                {'year': local_pub_date.strftime("%Y"),
+                 'month': local_pub_date.strftime("%b").lower(),
+                 'day': local_pub_date.strftime("%d"),
                  'slug': self.slug})
     get_absolute_url = models.permalink(get_absolute_url)
 
