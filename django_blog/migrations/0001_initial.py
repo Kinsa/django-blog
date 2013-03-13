@@ -29,7 +29,7 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.CharField')(max_length=250)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
             ('body', self.gf('django.db.models.fields.TextField')()),
-            ('pub_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 11, 15, 0, 0))),
+            ('pub_date', self.gf('django.db.models.fields.DateTimeField')()),
             ('author', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['django_blog.Author'])),
             ('status', self.gf('django.db.models.fields.IntegerField')(default=1)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['django_blog.Category'])),
@@ -102,7 +102,7 @@ class Migration(SchemaMigration):
             'body': ('django.db.models.fields.TextField', [], {}),
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['django_blog.Category']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'pub_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 11, 15, 0, 0)'}),
+            'pub_date': ('django.db.models.fields.DateTimeField', [], {}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '250'})
