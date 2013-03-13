@@ -19,4 +19,4 @@ class LatestEntries(Feed):
         return striptags(item.title)
 
     def item_description(self, item):
-        return item.body_html
+        return item.body
