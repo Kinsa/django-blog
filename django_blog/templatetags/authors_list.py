@@ -6,7 +6,7 @@ from django_blog.models import Author
 register = template.Library()
 
 
-@register.inclusion_tag('blog/_authors.html')
+@register.inclusion_tag('blog/_authors_list.html')
 def authors_list():
     authors = []
     try:
