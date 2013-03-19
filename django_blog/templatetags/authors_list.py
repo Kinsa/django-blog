@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.inclusion_tag('blog/_authors.html')
-def fetch_authors():
+def authors_list():
     authors = []
     try:
         all_authors = Author.objects.all()
