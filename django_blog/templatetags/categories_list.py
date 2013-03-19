@@ -6,8 +6,8 @@ from django_blog.models import Category
 register = template.Library()
 
 
-@register.inclusion_tag('blog/_categories.html')
-def fetch_categories():
+@register.inclusion_tag('blog/_categories_list.html')
+def categories_list():
     categories = []
     try:
         all_categories = Category.objects.all()
