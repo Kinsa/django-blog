@@ -130,26 +130,26 @@ By default the templates contain only the bare necessities. To override the defa
 Template Tags
 =============
 
-{% fetch_authors %}
-*******************
+{% authors_list %}
+******************
 
-Returns an unordered list of all authors via the template ``_authors.html``.
-
-Usage:
-
-::
-
- {% load authors %}
- {% fetch_authors %}
-
-{% fetch_categories %}
-**********************
-
-Returns an unordered list of all categories via the template ``_categories.html``.
+Returns an unordered list of all authors via the template ``_authors_list.html``.
 
 Usage:
 
 ::
 
- {% load categories %}
- {% fetch_categories %}
+ {% load authors_list %}
+ {% authors_list %}
+
+{% categories_list %}
+*********************
+
+Returns an unordered list of all categories via the template ``_categories_list.html``.
+
+Usage:
+
+::
+
+ {% load categories_list %}
+ {% categories_list %}
