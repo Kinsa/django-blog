@@ -22,8 +22,6 @@ Include in the PIP requirements file the following lines:
 
 ::
 
- south==0.7.6
- pytz==2012j
  -e git://github.com/jbergantine/django-blog.git#egg=django_blog
 
 And then install as normal (IE:)
