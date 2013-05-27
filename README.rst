@@ -13,7 +13,6 @@ Installation from Source
  $ cd django-blog
  $ python setup.py install
 
-You will also have to install `South <http://pypi.python.org/pypi/South/>`_ and `Markdown <http://pypi.python.org/pypi/Markdown/>`_.
 
 Installation via PIP Requirements File
 ======================================
