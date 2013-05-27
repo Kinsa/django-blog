@@ -55,11 +55,18 @@ Specify the AUTH_PROFILE_MODULE in the project's settings file:
 
  AUTH_PROFILE_MODULE = 'django_blog.Author'
 
-Migrate the database.
+If you're using South, initiate the migration and then migrate the database.
 
 ::
 
+ $ ./manage.py schemamigration --init django_blog
  $ ./manage.py migrate django_blog
+
+If you're not using South, sync the database.
+
+::
+
+ $ ./manage.py syncdb
 
 A list of the latest 15 posts can now be linked to: 
 
