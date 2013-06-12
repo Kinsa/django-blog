@@ -4,7 +4,7 @@ from pytz import timezone
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone as dj_timezone
-from myproject.settings.base import TIME_ZONE
+from django.conf.global_settings import TIME_ZONE
 
 
 class Author(models.Model):
