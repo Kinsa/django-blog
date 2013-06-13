@@ -1,10 +1,10 @@
 import datetime
 from pytz import timezone
 
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone as dj_timezone
-from django.conf.global_settings import TIME_ZONE
 
 
 class Author(models.Model):
@@ -72,7 +72,7 @@ class Entry(models.Model):
                   'Must be unique.')
     body = models.TextField(help_text='Use Markdown to mark this up. '\
         'http://daringfireball.net/projects/markdown/syntax')
-    pub_date = models.DateTimeField(default=datetime.datetime.now().replace(tzinfo=timezone(TIME_ZONE)))
+    pub_date = models.DateTimeField(default=datetime.datetime.now().replace(tzinfo=timezone(settings.TIME_ZONE)))
     author = models.ForeignKey(Author)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
     category = models.ForeignKey(Category)
