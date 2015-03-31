@@ -105,7 +105,7 @@ class Entry(models.Model):
 
     def save(self, *args, **kwargs):
         if self.body:
-            self.body_html = markdown.markdown(self.body)
+            self.body_html = markdown(self.body)
         super(Entry, self).save(*args, **kwargs)
 
     objects = models.Manager()
