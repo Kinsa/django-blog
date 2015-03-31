@@ -1,6 +1,5 @@
-import datetime
+from markdown import markdown
 
-from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -26,11 +25,15 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=250,
-        help_text='Maximum 250 characters.')
-    slug = models.SlugField(unique=True,
-        help_text='Suggested value automatically generated from title. '\
-                  'Must be unique.')
+    title = models.CharField(
+        max_length=250,
+        help_text='Maximum 250 characters.'
+    )
+    slug = models.SlugField(
+        unique=True,
+        help_text='Suggested value automatically generated from title. '
+                  'Must be unique.'
+    )
 
     class Meta:
         ordering = ['title']
@@ -51,8 +54,10 @@ class Category(models.Model):
 class LiveEntryManager(models.Manager):
 
     def get_query_set(self):
-        return super(LiveEntryManager,
-            self).get_query_set().filter(status=self.model.LIVE_STATUS)
+        return super(
+            LiveEntryManager,
+            self
+        ).get_query_set().filter(status=self.model.LIVE_STATUS)
 
 
 class Entry(models.Model):
@@ -66,11 +71,14 @@ class Entry(models.Model):
     )
 
     title = models.CharField(max_length=250)
-    slug = models.SlugField(unique_for_date='pub_date',
-        help_text='Suggested value automatically generated from title. '\
+    slug = models.SlugField(
+        unique_for_date='pub_date',
+        help_text='Suggested value automatically generated from title. '
                   'Must be unique.')
-    body = models.TextField(help_text='Use Markdown to mark this up. '\
-        'http://daringfireball.net/projects/markdown/syntax')
+    body = models.TextField(
+        help_text='Use Markdown to mark this up. '
+                  'http://daringfireball.net/projects/markdown/syntax')
+    body_html = models.TextField(editable=False, blank=True)
     pub_date = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(Author)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
@@ -85,13 +93,20 @@ class Entry(models.Model):
 
     def get_absolute_url(self):
         local_pub_date = timezone.localtime(self.pub_date)
-        return ('blog_entry_detail',
-                (),
-                {'year': local_pub_date.strftime("%Y"),
-                 'month': local_pub_date.strftime("%b").lower(),
-                 'day': local_pub_date.strftime("%d"),
-                 'slug': self.slug})
+        return (
+            'blog_entry_detail', (), {
+                'year': local_pub_date.strftime("%Y"),
+                'month': local_pub_date.strftime("%b").lower(),
+                'day': local_pub_date.strftime("%d"),
+                'slug': self.slug
+            }
+        )
     get_absolute_url = models.permalink(get_absolute_url)
+
+    def save(self, *args, **kwargs):
+        if self.body:
+            self.body_html = markdown.markdown(self.body)
+        super(Entry, self).save(*args, **kwargs)
 
     objects = models.Manager()
     live = LiveEntryManager()

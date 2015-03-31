@@ -71,6 +71,7 @@ version = __import__('django_blog').__version__
 install_requires = [
     'Django>=1.3',
     'pytz>=2012j',
+    'markdown'
 ]
 
 setup(
