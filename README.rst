@@ -166,3 +166,20 @@ Hidden Entries
 ==============
 
 In addition to not being listed in any of the list views or the XML (RSS) feed, Hidden entries will return a 404 Page Not Found if the URL for the detail view is accessed directly. This can be used to remove an Entry without completely deleting it. It can still be accessed from within the site Admin.
+
+Live Entry Manager
+==================
+
+The live entry manager can be used to return all entries with a live status. Example usage would be in ``sitemaps.py``:
+
+::
+
+ from django.contrib.sitemaps import Sitemap
+ from django_blog.models import Entry
+ 
+ class BlogSitemap(Sitemap):
+   def items(self):
+     Entry.live.all()
+
+   def lastmod(self, obj):
+     return obj.pub_date
