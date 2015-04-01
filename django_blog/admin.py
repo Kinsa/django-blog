@@ -19,7 +19,7 @@ class EntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['title']}
 
     # customize the admin change list
-    list_display = ('title', 'pub_date')
+    list_display = ('title', 'pub_date', 'status')
 
     # add a filter sidebar to the list view
     list_filter = ['pub_date', 'author', 'status']
