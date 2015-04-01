@@ -156,3 +156,13 @@ Usage:
 
  {% load categories_list %}
  {% categories_list %}
+
+Draft Entries
+=============
+
+Draft entries can be previwed directly by clicking the View on Site link from within the Entries Admin. These entries will not be added to any of the list views nor will they be published in the XML (RSS) feed until their status is changed to Live.
+
+Hidden Entries
+==============
+
+In addition to not being listed in any of the list views or the XML (RSS) feed, Hidden entries will return a 404 Page Not Found if the URL for the detail view is accessed directly. This can be used to remove an Entry without completely deleting it. It can still be accessed from within the site Admin.
