@@ -43,10 +43,7 @@ In the project's urls.py file add:
 
 ::
 
- url(r'^blog/author/', include('django_blog.urls.authors')),
- url(r'^blog/category/', include('django_blog.urls.categories')),
- url(r'^blog/feeds/', include('django_blog.urls.feeds')),
- url(r'^blog/', include('django_blog.urls.entries')),
+url(r'^blog/', include('django_blog.urls', namespace='blog')),
 
 Specify the AUTH_PROFILE_MODULE in the project's settings file: 
 
@@ -71,55 +68,55 @@ A list of the latest 15 posts can now be linked to:
 
 ::
 
- <a href="{% url 'blog_entry_archive' %}">Blog</a>
+ <a href="{% url 'blog:blog_entry_archive' %}">Blog</a>
 
 A list of all posts in a specific year can be linked to, passing in the year: 
 
 ::
 
- <a href="{% url 'blog_entry_archive_year' 2012 %}">2012</a>
+ <a href="{% url 'blog:blog_entry_archive_year' 2012 %}">2012</a>
 
 A list of all posts in a specific month can be linked to, passing in year and month: 
 
 ::
 
- <a href="{% url 'blog_entry_archive_month' 2012 01 %}">Jan, 2012</a>
+ <a href="{% url 'blog:blog_entry_archive_month' 2012 01 %}">Jan, 2012</a>
 
 A list of all posts on a specific day can be linked to, passing in year, month and day: 
 
 ::
 
- <a href="{% url blog_entry_archive_day 2012 01 01 %}">Jan 01, 2012</a>
+ <a href="{% url 'blog:blog_entry_archive_day' 2012 01 01 %}">Jan 01, 2012</a>
 
 A specific blog post can be linked to, passing in year, month, day and slug: 
 
 ::
 
- <a href="{% url 'blog_entry_detail' 2012 01 01 'first-post' %}">First Post</a>
+ <a href="{% url 'blog:blog_entry_detail' 2012 01 01 'first-post' %}">First Post</a>
     
 A list of all categories can be linked to: 
 
 ::
 
- <a href="{% url 'blog_category_list' %}">Categories</a>
+ <a href="{% url 'blog:blog_category_list' %}">Categories</a>
 
 A list of all posts in a specific category can be linked to, passing in the slug of the category: 
 
 ::
 
- <a href="{% url 'blog_category_detail' 'spying' %}">Posts about Spying</a>
+ <a href="{% url 'blog:blog_category_detail' 'tradecraft' %}">Posts about Tradecraft</a>
 
 A list of all the posts by a specific author can be linked to, passing in the id of the author: 
 
 ::
 
- <a href="{% url 'blog_author_detail' 2 %}">Posts by James Bond</a>
+ <a href="{% url 'blog:blog_author_detail' 1 %}">Posts by James Bond</a>
 
 The RSS feed can now be referred to in the ``<head>`` of your HTML templates: 
 
 ::
     
- <link rel="feed alternate" type="application/rss+xml" title="Blog" href="{% url 'blog_feed' %}" />
+ <link rel="feed alternate" type="application/rss+xml" title="Blog" href="{% url 'blog:blog_feed' %}" />
 
 Configure the Templates
 =======================
@@ -183,3 +180,27 @@ The live entry manager can be used to return all entries with a live status. Exa
 
    def lastmod(self, obj):
      return obj.pub_date
+
+Developing
+==========
+
+django_blog follows the `Git Flow branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_.
+
+When releasing, bump the version number in the project's ``setup.py`` file.
+
+Testing
+-------
+
+::
+
+ $ python setup.py test
+
+With TOX
+^^^^^^^^
+
+First, install Tox, then run the tests. This will test against the Django versions specified in the environments specified in the ``tox.ini`` file
+
+::
+
+ $ pip install tox
+ $ tox

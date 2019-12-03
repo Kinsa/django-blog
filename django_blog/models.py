@@ -2,11 +2,12 @@ from markdown import markdown
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.utils import timezone
 
 
 class Author(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
 
     def __unicode__(self):
         if self.user.first_name and self.user.last_name:
@@ -43,8 +44,7 @@ class Category(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return ('blog_category_detail', (), {'slug': self.slug})
-    get_absolute_url = models.permalink(get_absolute_url)
+        return reverse('blog:blog_category_detail', kwargs={'slug': self.slug})
 
     def live_entry_set(self):
         from django_blog.models import Entry
@@ -80,9 +80,9 @@ class Entry(models.Model):
                   'http://daringfireball.net/projects/markdown/syntax')
     body_html = models.TextField(editable=False, blank=True)
     pub_date = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(Author)
+    author = models.ForeignKey('Author', on_delete=models.PROTECT)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey('Category', on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = "Entries"
@@ -93,15 +93,14 @@ class Entry(models.Model):
 
     def get_absolute_url(self):
         local_pub_date = timezone.localtime(self.pub_date)
-        return (
-            'blog_entry_detail', (), {
+        return reverse(
+            'blog:blog_entry_detail', kwargs={
                 'year': local_pub_date.strftime("%Y"),
                 'month': local_pub_date.strftime("%b").lower(),
                 'day': local_pub_date.strftime("%d"),
                 'slug': self.slug
             }
         )
-    get_absolute_url = models.permalink(get_absolute_url)
 
     def save(self, *args, **kwargs):
         if self.body:

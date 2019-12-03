@@ -1,10 +1,10 @@
-from django.template.defaultfilters import striptags
 from django.contrib.syndication.views import Feed
+from django.template.defaultfilters import striptags
 
 from django_blog.models import Entry
 
 
-class LatestEntries(Feed):
+class LatestEntriesFeed(Feed):
     title = 'Blog'
     link = '/blog/'
     description = 'Latest blog posts'

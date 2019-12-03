@@ -1,0 +1,27 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "1234",
+        "last_login": "2017-06-10T20:12:10.933Z",
+        "is_superuser": true,
+        "username": "jamesbond007",
+        "first_name": "James",
+        "last_name": "Bond",
+        "email": "james.bond@royal.gov.uk",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-06-10T20:12:10.933Z",
+        "groups": [],
+        "user_permissions": []
+    }
+  },
+  {
+    "model": "django_blog.Author",
+    "pk": 1,
+    "fields": {
+      "user": 1
+    }
+  }
+]
