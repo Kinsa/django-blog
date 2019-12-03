@@ -50,22 +50,9 @@ In the project's urls.py file add:
 
 ::
 
-url(r'^blog/', include('django_blog.urls', namespace='blog')),
+url(r'^blog/', include('django_blog.urls')),
 
-Specify the AUTH_PROFILE_MODULE in the project's settings file: 
-
-::
-
- AUTH_PROFILE_MODULE = 'django_blog.Author'
-
-If you're using South, initiate the migration and then migrate the database.
-
-::
-
- $ ./manage.py schemamigration --init django_blog
- $ ./manage.py migrate django_blog
-
-If you're not using South, sync the database.
+Sync the database.
 
 ::
 

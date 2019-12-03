@@ -91,6 +91,4 @@ STATIC_URL = '/static/'
 
 SITE_ID = 1
 
-AUTH_PROFILE_MODULE = 'django_blog.Author'
-
 FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures'), ]
