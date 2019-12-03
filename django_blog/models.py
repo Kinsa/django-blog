@@ -15,6 +15,9 @@ class Author(models.Model):
         else:
             return self.user.username
 
+    def get_absolute_url(self):
+        return reverse('blog:blog_author_detail', kwargs={'id': self.id})
+
     def live_entry_set(self):
         return self.entry_set.filter(status=Entry.LIVE_STATUS)
 
