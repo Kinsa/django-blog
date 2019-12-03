@@ -1,0 +1,18 @@
+[
+  {
+    "model": "django_blog.Category",
+    "pk": 1,
+    "fields": {
+      "title": "Tradecraft",
+      "slug": "tradecraft"
+    }
+  },
+  {
+    "model": "django_blog.Category",
+    "pk": 2,
+    "fields": {
+      "title": "Agents",
+      "slug": "agents"
+    }
+  }
+]

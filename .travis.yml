@@ -1,0 +1,47 @@
+# containers
+sudo: false
+
+language: python
+
+matrix:
+  include:
+    - python: 2.7
+      env: TOXENV=py27-111
+    - python: 3.4
+      env: TOXENV=py34-111
+    - python: 3.5
+      env: TOXENV=py35-111
+    - python: 3.5
+      env: TOXENV=py35-21
+    - python: 3.5
+      env: TOXENV=py35-22
+    - python: 3.6
+      env: TOXENV=py36-111
+    - python: 3.6
+      env: TOXENV=py36-21
+    - python: 3.6
+      env: TOXENV=py36-22
+    - python: 3.6
+      env: TOXENV=py36-30
+    - python: 3.7
+      env: TOXENV=py37-21
+    - python: 3.7
+      env: TOXENV=py37-22
+    - python: 3.7
+      env: TOXENV=py37-30
+    - python: 3.8
+      env: TOXENV=py38-22
+    - python: 3.8
+      env: TOXENV=py38-30
+    - python: 3.8-dev
+      env: TOXENV=py38-22
+    - python: 3.8-dev
+      env: TOXENV=py38-30
+
+# command to install dependencies
+install:
+  - pip install tox
+
+# command to run tests
+script:
+  - tox -e $TOXENV
