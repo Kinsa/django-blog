@@ -4,6 +4,13 @@ Django Blog
 
 A multi-author blog for Django.
 
+.. image:: https://travis-ci.org/bergantine/django-blog.svg?branch=develop
+
+`View builds on TravisCI.`__
+
+__ https://travis-ci.org/bergantine/django-blog
+
+
 Installation from Source
 ========================
 
