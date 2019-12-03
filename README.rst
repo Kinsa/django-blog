@@ -50,7 +50,7 @@ In the project's urls.py file add:
 
 ::
 
-url(r'^blog/', include('django_blog.urls')),
+ url(r'^blog/', include('django_blog.urls')),
 
 Sync the database.
 
