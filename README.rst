@@ -52,11 +52,11 @@ In the project's urls.py file add:
 
  url(r'^blog/', include('django_blog.urls')),
 
-Sync the database.
+Migrate the database:
 
 ::
 
- $ ./manage.py syncdb
+ $ ./manage.py migrate
 
 A list of the latest 15 posts can now be linked to: 
 
