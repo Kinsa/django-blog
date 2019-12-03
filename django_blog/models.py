@@ -1,13 +1,13 @@
 from markdown import markdown
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
 
 
 class Author(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __unicode__(self):
         if self.user.first_name and self.user.last_name:
@@ -15,14 +15,15 @@ class Author(models.Model):
         else:
             return self.user.username
 
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Author.objects.create(user=instance)
-
-    models.signals.post_save.connect(create_user_profile, sender=User)
-
     def live_entry_set(self):
         return self.entry_set.filter(status=Entry.LIVE_STATUS)
+
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Author.objects.create(user=instance)
+
+models.signals.post_save.connect(create_user_profile, sender=settings.AUTH_USER_MODEL)
 
 
 class Category(models.Model):
