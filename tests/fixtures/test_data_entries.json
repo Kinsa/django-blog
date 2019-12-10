@@ -3,12 +3,250 @@
         "model": "django_blog.Entry",
         "pk": 1,
         "fields": {
-            "title": "Soviet Agents",
+            "title": "First Post",
             "slug": "first-post",
             "body": "Lorem ipsum dolor sit amet...",
             "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
             "pub_date": "2012-01-01T00:00:00.007Z",
             "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 2,
+        "fields": {
+            "title": "Second Post",
+            "slug": "second-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-02-01T00:00:00.007Z",
+            "author": 2,
+            "status": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 3,
+        "fields": {
+            "title": "Third Post",
+            "slug": "third-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-03-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 4,
+        "fields": {
+            "title": "Fourth Post",
+            "slug": "fourth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-04-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 5,
+        "fields": {
+            "title": "Fifth Post",
+            "slug": "fifth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-05-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 6,
+        "fields": {
+            "title": "Sixth Post",
+            "slug": "sixth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-06-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 7,
+        "fields": {
+            "title": "Seventh Post",
+            "slug": "seventh-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-07-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 8,
+        "fields": {
+            "title": "Draft Post",
+            "slug": "draft-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-08-01T00:00:00.007Z",
+            "author": 1,
+            "status": 2,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 9,
+        "fields": {
+            "title": "Hidden Post",
+            "slug": "hidden-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-09-01T00:00:00.007Z",
+            "author": 1,
+            "status": 3,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 10,
+        "fields": {
+            "title": "Tenth Post",
+            "slug": "tenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-10-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 11,
+        "fields": {
+            "title": "Eleventh Post",
+            "slug": "eleventh-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-11-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 12,
+        "fields": {
+            "title": "Twelvth Post",
+            "slug": "twelvth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2012-12-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 13,
+        "fields": {
+            "title": "Thirteenth Post",
+            "slug": "thirteenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2013-01-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 14,
+        "fields": {
+            "title": "Fourteenth Post",
+            "slug": "fourteenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2013-02-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 15,
+        "fields": {
+            "title": "Fifteenth Post",
+            "slug": "fifteenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2013-03-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 16,
+        "fields": {
+            "title": "Sixteenth Post",
+            "slug": "sixteenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2013-04-01T00:00:00.007Z",
+            "author": 2,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 17,
+        "fields": {
+            "title": "Seventeenth Post",
+            "slug": "seventeenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2013-04-01T00:00:00.007Z",
+            "author": 1,
+            "status": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "django_blog.Entry",
+        "pk": 18,
+        "fields": {
+            "title": "Eighteenth Post",
+            "slug": "eighteenth-post",
+            "body": "Lorem ipsum dolor sit amet...",
+            "body_html": "<p>Lorem ipsum dolor sit amet...</p>",
+            "pub_date": "2013-05-01T00:00:00.007Z",
+            "author": 2,
             "status": 1,
             "category": 2
         }

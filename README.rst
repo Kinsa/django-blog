@@ -58,49 +58,58 @@ Migrate the database:
 
  $ ./manage.py migrate
 
-A list of the latest 15 posts can now be linked to: 
+
+URLS
+====
+
+URLs are namespaced with ``blog``.
+
+Named URLS
+**********
+
+A list of the latest 15 posts: 
 
 ::
 
  <a href="{% url 'blog:blog_entry_archive' %}">Blog</a>
 
-A list of all posts in a specific year can be linked to, passing in the year: 
+A list of all posts in a specific year, with an argument for the year: 
 
 ::
 
  <a href="{% url 'blog:blog_entry_archive_year' 2012 %}">2012</a>
 
-A list of all posts in a specific month can be linked to, passing in year and month: 
+A list of all posts in a specific month, with arguments for the year and month: 
 
 ::
 
  <a href="{% url 'blog:blog_entry_archive_month' 2012 01 %}">Jan, 2012</a>
 
-A list of all posts on a specific day can be linked to, passing in year, month and day: 
+A list of all posts on a specific day, with arguments for the year, month and day: 
 
 ::
 
  <a href="{% url 'blog:blog_entry_archive_day' 2012 01 01 %}">Jan 01, 2012</a>
 
-A specific blog post can be linked to, passing in year, month, day and slug: 
+A specific blog post, with arguments for the year, month, day and slug: 
 
 ::
 
  <a href="{% url 'blog:blog_entry_detail' 2012 01 01 'first-post' %}">First Post</a>
     
-A list of all categories can be linked to: 
+A list of all categories: 
 
 ::
 
  <a href="{% url 'blog:blog_category_list' %}">Categories</a>
 
-A list of all posts in a specific category can be linked to, passing in the slug of the category: 
+A list of all posts in a specific category, with an argument for the slug of the category: 
 
 ::
 
  <a href="{% url 'blog:blog_category_detail' 'tradecraft' %}">Posts about Tradecraft</a>
 
-A list of all the posts by a specific author can be linked to, passing in the id of the author: 
+A list of all the posts by a specific author, with an argument for the id of the author: 
 
 ::
 
@@ -183,14 +192,14 @@ django_blog follows the `Git Flow branching model <http://nvie.com/posts/a-succe
 When releasing, bump the version number in the project's ``setup.py`` file.
 
 Testing
--------
+=======
 
 ::
 
  $ python setup.py test
 
 With TOX
-^^^^^^^^
+********
 
 First, install Tox, then run the tests. This will test against the Django versions specified in the environments specified in the ``tox.ini`` file
 

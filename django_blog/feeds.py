@@ -4,13 +4,13 @@ from django.template.defaultfilters import striptags
 from django_blog.models import Entry
 
 
-class LatestEntriesFeed(Feed):
+class EntriesFeed(Feed):
     title = 'Blog'
     link = '/blog/'
     description = 'Latest blog posts'
 
     def items(self):
-        return Entry.live.all()[:30]
+        return Entry.live.all()
 
     def item_pubdate(self, item):
         return item.pub_date

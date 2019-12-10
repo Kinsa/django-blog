@@ -8,7 +8,7 @@ from django.views.generic.dates import (
     YearArchiveView
 )
 
-from django_blog.feeds import LatestEntriesFeed
+from django_blog.feeds import EntriesFeed
 from django_blog.models import Category, Entry
 from django_blog.views import author_detail, category_detail
 
@@ -42,7 +42,7 @@ urlpatterns = [
         name='blog_category_detail'
     ),
 
-    url(r'^feed/$', LatestEntriesFeed(), name='blog_feed'),
+    url(r'^feed/$', EntriesFeed(), name='blog_feed'),
 
     url(
         r'^(?P<year>\d{4})/$',

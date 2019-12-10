@@ -10,7 +10,7 @@ if os.path.exists('README.rst'):
 
 setup(
     name='django-blog',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(exclude=["tests"]),
     install_requires=[
         'markdown',
@@ -21,7 +21,7 @@ setup(
     description=description,
     long_description=long_description,
     url='https://github.com/bergantine/django-blog',
-    download_url='https://github.com/bergantine/django-blog/tarball/1.0.0',
+    download_url='https://github.com/bergantine/django-blog/tarball/1.0.1',
     license='New BSD License',
     platforms=['any'],
     classifiers=[

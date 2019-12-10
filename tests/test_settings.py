@@ -10,7 +10,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sites',
@@ -93,3 +92,5 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 
 FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures'), ]
+
+BLOG_PAGE_SIZE = 15

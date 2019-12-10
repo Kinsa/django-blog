@@ -15,6 +15,9 @@ class Author(models.Model):
         else:
             return self.user.username
 
+    def get_absolute_url(self):
+        return reverse('blog:blog_author_detail', kwargs={'id': self.id})
+
     def live_entry_set(self):
         return self.entry_set.filter(status=Entry.LIVE_STATUS)
 
@@ -53,12 +56,8 @@ class Category(models.Model):
 
 
 class LiveEntryManager(models.Manager):
-
-    def get_query_set(self):
-        return super(
-            LiveEntryManager,
-            self
-        ).get_query_set().filter(status=self.model.LIVE_STATUS)
+    def get_queryset(self):
+        return super(LiveEntryManager, self).get_queryset().filter(status=self.model.LIVE_STATUS)
 
 
 class Entry(models.Model):
