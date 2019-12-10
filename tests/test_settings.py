@@ -92,3 +92,5 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 
 FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures'), ]
+
+BLOG_PAGE_SIZE = 15

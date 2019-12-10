@@ -12,7 +12,25 @@
         "email": "james.bond@royal.gov.uk",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2017-06-10T20:12:10.933Z",
+        "date_joined": "1953-06-10T20:12:10.933Z",
+        "groups": [],
+        "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "1234",
+        "last_login": "2017-06-10T20:12:10.933Z",
+        "is_superuser": true,
+        "username": "goldfinger",
+        "first_name": "Auric",
+        "last_name": "Goldfinger",
+        "email": "goldfigner@smersh.ru",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "1937-06-10T20:12:10.933Z",
         "groups": [],
         "user_permissions": []
     }
@@ -22,6 +40,13 @@
     "pk": 1,
     "fields": {
       "user": 1
+    }
+  },
+  {
+    "model": "django_blog.Author",
+    "pk": 2,
+    "fields": {
+      "user": 2
     }
   }
 ]

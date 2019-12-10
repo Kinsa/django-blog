@@ -56,12 +56,8 @@ class Category(models.Model):
 
 
 class LiveEntryManager(models.Manager):
-
-    def get_query_set(self):
-        return super(
-            LiveEntryManager,
-            self
-        ).get_query_set().filter(status=self.model.LIVE_STATUS)
+    def get_queryset(self):
+        return super(LiveEntryManager, self).get_queryset().filter(status=self.model.LIVE_STATUS)
 
 
 class Entry(models.Model):
