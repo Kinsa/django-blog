@@ -11,6 +11,7 @@ from django.db.models.deletion import ProtectedError
 
 from django_blog.models import (
     Author,
+    Category,
     Entry,
 )
 
@@ -77,6 +78,23 @@ class AuthorTest(TestCase):
         # we should not be allowed to remove the author
         with self.assertRaises(ProtectedError):
             Author.objects.get(id=1).delete()
+
+
+class CategoryTest(TestCase):
+    fixtures = [
+        'test_data_authors',
+        'test_data_categories',
+        'test_data_entries'
+    ]
+
+    # Relationship to Entry is PROTECT
+    def test_removing_a_category(self):
+        # ensure there is data to work with
+        self.assertTrue(Entry.objects.filter(category__id=1).count() > 0)
+
+        # we should not be allowed to remove the author
+        with self.assertRaises(ProtectedError):
+            Category.objects.filter(id=1).delete()
 
 
 class RoutingTest(TestCase):
