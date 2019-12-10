@@ -6,7 +6,11 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse
 
-from django_blog.models import Entry
+from django.contrib.auth.models import User
+from django_blog.models import (
+    Author,
+    Entry,
+)
 
 
 class ModelManagerTest(TestCase):
@@ -49,6 +53,13 @@ class ModelManagerTest(TestCase):
                     self.assertTrue(entry.id in Entry.live.values_list('id', flat=True))
             except AttributeError:
                 self.assertTrue(entry.id in Entry.live.values_list('id', flat=True))
+
+
+class AuthorTest(TestCase):
+    # Creating a User should create an Author
+    def test_author_creates_user(self):
+        user = User.objects.create(username='foo')
+        self.assertTrue(Author.objects.get(user=user))
 
 
 class RoutingTest(TestCase):
