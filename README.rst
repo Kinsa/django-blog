@@ -4,19 +4,12 @@ Django Blog
 
 A multi-author blog for Django.
 
-.. image:: https://travis-ci.org/bergantine/django-blog.svg?branch=develop
-
-`View builds on TravisCI.`__
-
-__ https://travis-ci.org/bergantine/django-blog
-
-
 Installation from Source
 ========================
 
 ::
 
- $ git clone git://github.com/bergantine/django-blog.git
+ $ git clone git://github.com/Kinsa/django-blog.git
  $ cd django-blog
  $ python setup.py install
 
@@ -28,7 +21,7 @@ Include in the PIP requirements file the following lines:
 
 ::
 
- -e git://github.com/bergantine/django-blog.git#egg=django_blog
+ -e git://github.com/Kinsa/django-blog.git#egg=django_blog
 
 And then install as normal (IE:)
 
