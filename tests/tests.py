@@ -6,7 +6,14 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse
 
-from django_blog.models import Entry
+from django.contrib.auth.models import User
+from django.db.models.deletion import ProtectedError
+
+from django_blog.models import (
+    Author,
+    Category,
+    Entry,
+)
 
 
 class ModelManagerTest(TestCase):
@@ -49,6 +56,45 @@ class ModelManagerTest(TestCase):
                     self.assertTrue(entry.id in Entry.live.values_list('id', flat=True))
             except AttributeError:
                 self.assertTrue(entry.id in Entry.live.values_list('id', flat=True))
+
+
+class AuthorTest(TestCase):
+    fixtures = [
+        'test_data_authors',
+        'test_data_categories',
+        'test_data_entries'
+    ]
+
+    # Creating a User should create an Author
+    def test_author_creates_user(self):
+        user = User.objects.create(username='foo')
+        self.assertTrue(Author.objects.get(user=user))
+
+    # Relationship to Entry is PROTECT
+    def test_removing_an_author(self):
+        # ensure there is data to work with
+        self.assertTrue(Entry.objects.filter(author__id=1).count() > 0)
+
+        # we should not be allowed to remove the author
+        with self.assertRaises(ProtectedError):
+            Author.objects.get(id=1).delete()
+
+
+class CategoryTest(TestCase):
+    fixtures = [
+        'test_data_authors',
+        'test_data_categories',
+        'test_data_entries'
+    ]
+
+    # Relationship to Entry is PROTECT
+    def test_removing_a_category(self):
+        # ensure there is data to work with
+        self.assertTrue(Entry.objects.filter(category__id=1).count() > 0)
+
+        # we should not be allowed to remove the author
+        with self.assertRaises(ProtectedError):
+            Category.objects.filter(id=1).delete()
 
 
 class RoutingTest(TestCase):
