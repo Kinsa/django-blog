@@ -16,12 +16,12 @@ setup(
         'markdown',
         'django>=1.11'
     ],
-    author='Joe Bergantine',
-    author_email='joe@kinsa.us',
+    author='Kinsa Creative Incorporated',
+    author_email='enqueries@kinsa.cc',
     description=description,
     long_description=long_description,
     url='https://github.com/bergantine/django-blog',
-    download_url='https://github.com/bergantine/django-blog/tarball/1.0.1',
+    download_url='https://github.com/Kinsa/django-blog/tarball/1.0.1',
     license='New BSD License',
     platforms=['any'],
     classifiers=[
