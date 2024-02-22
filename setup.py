@@ -17,7 +17,7 @@ setup(
         'django>=1.11'
     ],
     author='Kinsa Creative Incorporated',
-    author_email='enqueries@kinsa.cc',
+    author_email='enquiries@kinsa.cc',
     description=description,
     long_description=long_description,
     url='https://github.com/bergantine/django-blog',
